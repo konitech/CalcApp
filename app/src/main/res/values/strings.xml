@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CalcApp</string>
+    <string name="text_view">2つの数値から計算をします</string>
 </resources>
