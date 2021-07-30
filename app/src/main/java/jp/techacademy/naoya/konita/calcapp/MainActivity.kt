@@ -6,6 +6,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 import android.content.Intent
 import android.util.Log
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity(), View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         Log.d("DEBUG",input1.text.toString())
         if((input1.text.toString() == "") || (input2.text.toString() == "")){
-            text_note.text = "数値を入力してください"
+            Snackbar.make(v, "数値を入力してください", Snackbar.LENGTH_LONG).show()
+            //text_note.text = "数値を入力してください"
         } else {
             val num1 = input1.text.toString().toDouble()
             val num2 = input2.text.toString().toDouble()
@@ -41,10 +43,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
                 R.id.button_div -> {
                     if (num2 == 0.0) {
-                        text_note.text = "2つめの数字が0なので計算できません！"
+                        Snackbar.make(v, "2つめの数字が0なので計算できません！", Snackbar.LENGTH_LONG).show()
+                        // text_note.text = "2つめの数字が0なので計算できません！"
                         cal_flag = false //もっとスマートな方法があるのか？
                     } else {
-                        cal_result = num1 / num2 //num2が0の場合は警告を出す
+                        cal_result = num1 / num2
                     }
                 }
             }
